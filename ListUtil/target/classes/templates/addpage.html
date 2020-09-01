@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Log-It</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add New Task</h1>
+	
+    <form action="#" th:action="@{/add}" th:object="${myNewTask}" method="post">
+     	<div th:if="${myNewTask.message}">
+   			 <div th:text="${myNewTask.message}"></div>
+		</div>
+    	<p>Task Name: <input type="text" th:field="*{taskName}" /></p>
+        <p>Task Description: <input type="text" th:field="*{taskDesc}" /></p>
+        <p><input type="submit" value="Add Task" /></p>
+    </form>
+     <form action="#" th:action="@{/logout}" method="get">
+     	<input type="submit" value="Log Out"/>
+     </form>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Log-It</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Your list of Log-Its - Delete Tasks</h1>
+    <form action="#" th:action="@{/deletetasks}" th:object="${displaydata}" method="post">
+		<div th:if="${displaydata.message}">
+   			<div th:text="${displaydata.message}"></div>
+    	</div>
+		<table>
+    		<thead>
+        	<tr>
+            	<th> Delete </th>
+       			<th> Task Id </th>
+            	<th> Task Name </th>
+            	
+       		 </tr>
+    		</thead>
+    <tbody>
+	<tr th:if="${#lists.isEmpty(displaydata.aList)}">
+            <td colspan="2"> No Tasks Available </td>
+    </tr>
+   	<tr th:each="obj, stat: *{aList}">
+        	<td><input type="checkbox" th:field="*{aList[__${stat.index}__].deleteStatus}"/>
+          <input type="hidden" th:field="*{aList[__${stat.index}__].taskName}" />
+          <input type="hidden" th:field="*{aList[__${stat.index}__].taskId}" />      
+           <input type="hidden" th:field="*{aList[__${stat.index}__].userName}" />            
+            </td>
+             
+             <td th:text="${obj.getTaskId()}"></td>
+              <td th:text="${obj.getTaskName()}"></td>
+              
+       
+    </tr>
+    </tbody>
+</table>
+		<input type="submit" value="Delete" />
+    </form>
+     <form action="#" th:action="@{/logout}" method="get">
+     	<input type="submit" value="Log Out"/>
+     </form>
+     
+</body>
+</html>

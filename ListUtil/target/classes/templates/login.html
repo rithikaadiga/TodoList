@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Log-It</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Login to Log-It</h1>
+	    <div th:if="${errorMessage}">
+   			 <div th:text="${errorMessage}"></div>
+<		</div>
+	
+    <form action="#" th:action="@{/login}" th:object="${login}" method="post">
+    	<p>User Name: <input type="text" th:field="*{userName}" /></p>
+        <p>Password: <input type="text" th:field="*{password}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+</body>
+</html>
